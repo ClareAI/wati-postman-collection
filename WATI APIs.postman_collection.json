@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "b262b6dd-45db-47fc-b7d5-b1c6be353834",
+		"name": "WATI APIs",
+		"description": "Learn how to use WATI APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Get Messages by WhatsApp Number"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Message Templates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Get Message Templates"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Get Contacts List"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Session Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Send Session Message"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Template Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Send Template Message"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Template Message CSV",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Send Template Message CSV"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
