@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "b262b6dd-45db-47fc-b7d5-b1c6be353834",
+		"name": "WATI APIs",
+		"description": "Learn how to use WATI APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Messages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pageSize",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "pageNumber",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/getMessages/{{whatsappNumber}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"getMessages",
+						"{{whatsappNumber}}"
+					]
+				},
+				"description": "Get Messages by WhatsApp Number"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Message Templates",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pageSize",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "pageNumber",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/getMessageTemplates",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"getMessageTemplates"
+					]
+				},
+				"description": "Get Message Templates"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contacts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pageSize",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "pageNumber",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/getContacts",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"getContacts"
+					]
+				},
+				"description": "Get Contacts List"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Media",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fileName",
+							"value": "ABC",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/getMedia",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"getMedia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Contact Attributes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"customParams\": [\n    {\n      \"name\": \"member\",\n      \"value\": \"VIP\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/updateContactAttributes/{{whatsappNumber}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"updateContactAttributes",
+						"{{whatsappNumber}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Contact",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"ABC\",\n  \"customParams\": [\n    {\n      \"name\": \"member\",\n      \"value\": \"VIP\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/addContact/{{whatsappNumber}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"addContact",
+						"{{whatsappNumber}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Session Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "messageText",
+							"value": "Hello",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/sendSessionMessage/{{whatsappNumber}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sendSessionMessage",
+						"{{whatsappNumber}}"
+					]
+				},
+				"description": "Send Session Message"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Template Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"template_name\": \"order_update\",\n  \"broadcast_name\": \"order_update\",\n  \"parameters\": \"[{'name':'name', 'value':'John'}, {'name':'ordernumber', 'value':'12345'}]\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/sendTemplateMessage/{{whatsappNumber}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sendTemplateMessage",
+						"{{whatsappNumber}}"
+					]
+				},
+				"description": "Send Template Message"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Template Message CSV",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{URL}}/api/v1/sendTemplateMessageCSV",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sendTemplateMessageCSV"
+					]
+				},
+				"description": "Send Template Message CSV"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
