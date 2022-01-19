@@ -656,19 +656,12 @@
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "agent-email@clare.ai",
-							"description": "Agent email",
-							"type": "text"
-						},
-						{
-							"key": "whatsappNumber",
-							"value": "{{whatsappNumber}}",
-							"type": "text"
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{URL}}/api/v1/assignOperator?email=agent-email@clare.ai&whatsappNumber={{whatsappNumber}}",
