@@ -566,7 +566,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"header\": {\n        \"type\": \"string\",\n        \"text\": \"string\",\n        \"media\": {\n            \"url\": \"string\"\n        }\n    },\n    \"body\": \"string\",\n    \"footer\": \"string\",\n    \"buttons\": [\n        {\n            \"text\": \"string\"\n        }\n    ]\n}",
+					"raw": "{\n    \"header\": {\n        \"type\": \"string\",\n        \"text\": \"string\",\n        \"media\": {\n            \"url\": \"string\",\n            \"fileName\": \"string\"\n        }\n    },\n    \"body\": \"string\",\n    \"footer\": \"string\",\n    \"buttons\": [\n        {\n            \"text\": \"string\"\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
