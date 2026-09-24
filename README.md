@@ -1,17 +1,18 @@
-# wati-postman-collection
-WATI APIs - Postman Collection
+# WATI Postman collections
 
-This is a Postman collection of WATI APIs. The provided environment contains the list of variables referenced by the API collection.
+This repository contains Postman collections for WATI APIs. See the [API documentation](https://docs.wati.io) for endpoint details.
 
-See docs for usage. https://docs.wati.io
+## V1
 
-# Requirements
-The WATI API Postman Collection and Environment requires the installation of Postman.
+Download `WATI APIs.postman_collection.json` and `WATI API Environment.postman_environment.json`, then import both files into Postman.
 
-# Installing
-Download WATI APIs.postman_collection.json and WATI API Environment.postman_environment.json onto your local machine.
+## V3
 
-Open Postman, click on Import and select the two json files.
+Download and import `WATI APIs V3.postman_collection.json`. It contains the public V3 endpoints and their request and response examples.
 
-Once imported, a new API collection will be created, along with the environment.
+Before sending a request, copy both values from **WATI API Docs** and set these collection variables:
 
+- `baseUrl`: paste the **API Endpoint** value. Do not add a trailing slash.
+- `token`: paste the complete **Access Token** value, including the `Bearer ` prefix. Do not commit a real token to this repository.
+
+The V3 collection is generated from the V3 OpenAPI specification. Regenerate it whenever the public V3 API contract changes.
