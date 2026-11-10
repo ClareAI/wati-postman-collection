@@ -14458,7 +14458,7 @@
                           "request": {
                             "name": "Create a WhatsApp group",
                             "description": {
-                              "content": "Creates a new WhatsApp group. Optionally specify a channel; when omitted, the default channel is used.\nOperators are identified by email, contacts by phone number or target format.\nOnly available on the Business plan.",
+                              "content": "Creates a new WhatsApp group. Optionally specify a channel; when omitted, the default channel is used.\nOperators are identified by email, contacts by phone number or target format.\nOnly available on the Business plan.\n\nAvailability note: This existing Groups request is outside the current ReadMe 2.6 public contract. Confirm account/channel availability with WATI before use; its presence in this collection is not a release or entitlement guarantee.",
                               "type": "text/plain"
                             },
                             "url": {
@@ -14855,7 +14855,7 @@
                               "request": {
                                 "name": "Delete a WhatsApp group",
                                 "description": {
-                                  "content": "Deletes the specified group. Idempotent — returns 200 if the group is already deleted.\nOnly available on the Business plan.",
+                                  "content": "Deletes the specified group. Idempotent — returns 200 if the group is already deleted.\nOnly available on the Business plan.\n\nAvailability note: This existing Groups request is outside the current ReadMe 2.6 public contract. Confirm account/channel availability with WATI before use; its presence in this collection is not a release or entitlement guarantee.",
                                   "type": "text/plain"
                                 },
                                 "url": {
@@ -15245,7 +15245,7 @@
                                   "request": {
                                     "name": "Send group invite to all pending contacts",
                                     "description": {
-                                      "content": "Queries all contacts of the group, filters to those still pending,\nand sends the group invite template to each contact's 1:1 conversation.\nOnly available on the Business plan.",
+                                      "content": "Queries all contacts of the group, filters to those still pending,\nand sends the group invite template to each contact's 1:1 conversation.\nOnly available on the Business plan.\n\nAvailability note: This existing Groups request is outside the current ReadMe 2.6 public contract. Confirm account/channel availability with WATI before use; its presence in this collection is not a release or entitlement guarantee.",
                                       "type": "text/plain"
                                     },
                                     "url": {
@@ -15644,7 +15644,7 @@
                                   "request": {
                                     "name": "Remove participants from a WhatsApp group",
                                     "description": {
-                                      "content": "Removes operators (by email) and/or contacts (by phone/target) from the group.\nAt least one of operatorEmails or contactTargets must be provided.\nOnly available on the Business plan.",
+                                      "content": "Removes operators (by email) and/or contacts (by phone/target) from the group.\nAt least one of operatorEmails or contactTargets must be provided.\nOnly available on the Business plan.\n\nAvailability note: This existing Groups request is outside the current ReadMe 2.6 public contract. Confirm account/channel availability with WATI before use; its presence in this collection is not a release or entitlement guarantee.",
                                       "type": "text/plain"
                                     },
                                     "url": {
@@ -16128,7 +16128,7 @@
                                   "request": {
                                     "name": "Add participants to a WhatsApp group",
                                     "description": {
-                                      "content": "Adds operators (by email) and/or contacts (by phone/target) to the group.\nAt least one of operatorEmails or contactTargets must be provided.\nParticipants already in the group are skipped (no-op).\nParticipants previously removed from the group are rejected and cannot rejoin.\nOnly available on the Business plan.",
+                                      "content": "Adds operators (by email) and/or contacts (by phone/target) to the group.\nAt least one of operatorEmails or contactTargets must be provided.\nParticipants already in the group are skipped (no-op).\nParticipants previously removed from the group are rejected and cannot rejoin.\nOnly available on the Business plan.\n\nAvailability note: This existing Groups request is outside the current ReadMe 2.6 public contract. Confirm account/channel availability with WATI before use; its presence in this collection is not a release or entitlement guarantee.",
                                       "type": "text/plain"
                                     },
                                     "url": {
@@ -16620,7 +16620,7 @@
                               "request": {
                                 "name": "List active WhatsApp groups",
                                 "description": {
-                                  "content": "Returns a cursor-paginated list of active groups.\nOptionally filter by channel or specific group IDs; when channel is omitted, the default channel is used.\nUse the `continuous_token` from the response to fetch subsequent pages.\nWhen the token is absent or null in the response, there are no more results.\nOnly available on the Business plan.",
+                                  "content": "Returns a cursor-paginated list of active groups.\nOptionally filter by channel or specific group IDs; when channel is omitted, the default channel is used.\nUse the `continuous_token` from the response to fetch subsequent pages.\nWhen the token is absent or null in the response, there are no more results.\nOnly available on the Business plan.\n\nAvailability note: This existing Groups request is outside the current ReadMe 2.6 public contract. Confirm account/channel availability with WATI before use; its presence in this collection is not a release or entitlement guarantee.",
                                   "type": "text/plain"
                                 },
                                 "url": {
@@ -26940,6 +26940,156 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Conversation discovery and scans — ReadMe 2.6",
+      "description": "Five operations already published in the public reference. Requests inherit collection authorization: set token to the complete Access Token value, including the Bearer prefix, as described in the repository README. Set baseUrl to your regional API host. Set scanId from an authorized asynchronous query result before using a scan request. They are examples and are never executed by preparation or validation.",
+      "item": [
+        {
+          "name": "List conversations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ext/v3/conversations?page_number=1&page_size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ext",
+                "v3",
+                "conversations"
+              ],
+              "query": [
+                {
+                  "key": "page_number",
+                  "value": "1"
+                },
+                {
+                  "key": "page_size",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "List conversations. GET /api/ext/v3/conversations. Returns conversations, newest first. Filter by channel_type and/or channel_id. Results can be limited by the active channel scope; do not assume all connected channels are included. The returned id can be used as the target of other conversation APIs. The whatsapp filter excludes WhatsApp group conversations; use whatsapp_group to filter those conversation records.\n\n### Permissions\n\nFor API access tokens and OIDC tokens, satisfy **at least one** of: `api`, `conversationsv3:read`. API access tokens may satisfy a listed scope through the configured scope hierarchy; OIDC tokens are checked against their scope claims. Legacy JWT authentication does not use this scope check. Authentication, role, tenant, and applicable feature or plan checks still apply. For HTTP 403, check the credential type, applicable scopes, roles, and workspace access; 403 does not always mean a missing scope. Authentication/authorization failures do not guarantee a JSON response body.\n\n### Plan availability\n\nCommercial plan policy: this operation is included in Growth, Pro and Business. Account-specific runtime enforcement may differ; this documentation correction does not change account access. Authentication, roles, scopes and workspace/channel requirements still apply. See [Endpoint availability by plan](https://docs.wati.io/reference/endpoint-availability-by-plan)."
+          },
+          "response": []
+        },
+        {
+          "name": "Query conversations",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/ext/v3/conversations/query",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ext",
+                "v3",
+                "conversations",
+                "query"
+              ]
+            },
+            "description": "Query current conversations within a time range by last customer message time. Results can be limited by the active channel scope; a channel filter does not guarantee complete coverage across all connected channels. With page.size, return a synchronous page (200); without it, create or reuse a durable scan (202). count_only is asynchronous. Query predicates honor current conversation access control. Scan results can reflect state evaluated over time; an accepted scan is not a completed result. The service can reject invalid fields, stale cursors, unavailable evidence, or an idempotency-key conflict. Some query validation and scan-state failures currently return HTTP 500. Inspect the actual status and response body; do not assume every invalid query returns 400 or retry an unchanged request indefinitely.\n\n### Permissions\n\nFor API access tokens and OIDC tokens, satisfy **at least one** of: `api`, `conversationsv3:read`, `wati_integration:read`. API access tokens may satisfy a listed scope through the configured scope hierarchy; OIDC tokens are checked against their scope claims. Legacy JWT authentication does not use this scope check. Authentication, role, tenant, and applicable feature or plan checks still apply. For HTTP 403, check the credential type, applicable scopes, roles, and workspace access; 403 does not always mean a missing scope. Authentication/authorization failures do not guarantee a JSON response body. Allowed roles: `DEVELOPER`, `TRIAL`, `ADMINISTRATOR`, `EXTERNAL_ADMINISTRATOR`, `PARTNER_ADMINISTRATOR`, `AI_OPERATOR`, or `API_TOKEN`. A user with `FLEXI_TRIAL` or `FLEXI_PAID` is explicitly denied, even if another listed role is present. A qualifying outstanding invoice can also result in a 403 response.\n\n### Plan availability\n\nCommercial plan policy: this operation is included in Growth, Pro and Business. Account-specific runtime enforcement may differ; this documentation correction does not change account access. Authentication, roles, scopes and workspace/channel requirements still apply. See [Endpoint availability by plan](https://docs.wati.io/reference/endpoint-availability-by-plan).\n\nThis example uses page.size for a synchronous page. Omit page.size only when an asynchronous scan is intended; preserve count_only requirements. A 202 response is not completion.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"time_range\": {\n    \"from\": \"2026-10-01T00:00:00Z\",\n    \"to\": \"2026-10-02T00:00:00Z\"\n  },\n  \"filters\": {\n    \"statuses\": [\n      \"open\"\n    ]\n  },\n  \"page\": {\n    \"size\": 20\n  },\n  \"count\": {\n    \"mode\": \"none\"\n  },\n  \"result_mode\": \"conversations\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get conversation scan",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ext/v3/conversations/scans/{{scanId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ext",
+                "v3",
+                "conversations",
+                "scans",
+                "{{scanId}}"
+              ]
+            },
+            "description": "Read scan status and counts. A scan belongs to the requesting user and can expire. The service rechecks current permissions and saved conversation access before returning it; permission changes can block access.\n\n### Permissions\n\nFor API access tokens and OIDC tokens, satisfy **at least one** of: `api`, `conversationsv3:read`, `wati_integration:read`. API access tokens may satisfy a listed scope through the configured scope hierarchy; OIDC tokens are checked against their scope claims. Legacy JWT authentication does not use this scope check. Authentication, role, tenant, and applicable feature or plan checks still apply. For HTTP 403, check the credential type, applicable scopes, roles, and workspace access; 403 does not always mean a missing scope. Authentication/authorization failures do not guarantee a JSON response body. Allowed roles: `DEVELOPER`, `TRIAL`, `ADMINISTRATOR`, `EXTERNAL_ADMINISTRATOR`, `PARTNER_ADMINISTRATOR`, `AI_OPERATOR`, or `API_TOKEN`. A user with `FLEXI_TRIAL` or `FLEXI_PAID` is explicitly denied, even if another listed role is present. A qualifying outstanding invoice can also result in a 403 response.\n\n### Plan availability\n\nCommercial plan policy: this operation is packaged for Pro and Business. Account-specific runtime enforcement may differ; this documentation correction does not change account access. Authentication, roles, scopes and workspace/channel requirements still apply. See [Endpoint availability by plan](https://docs.wati.io/reference/endpoint-availability-by-plan).\n\nSet the collection variable scanId to the scan_id returned by an authorized asynchronous query. Do not invent it or substitute a contact/conversation identifier. These scan operations have separate plan packaging; account-specific runtime enforcement may differ."
+          },
+          "response": []
+        },
+        {
+          "name": "Get conversation scan results",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ext/v3/conversations/scans/{{scanId}}/results?size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ext",
+                "v3",
+                "conversations",
+                "scans",
+                "{{scanId}}",
+                "results"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Read rows only after the scan completes. count_only scans have no result rows. Results are paged with an opaque cursor; access is rechecked before and after reading saved evidence.\n\n### Permissions\n\nFor API access tokens and OIDC tokens, satisfy **at least one** of: `api`, `conversationsv3:read`, `wati_integration:read`. API access tokens may satisfy a listed scope through the configured scope hierarchy; OIDC tokens are checked against their scope claims. Legacy JWT authentication does not use this scope check. Authentication, role, tenant, and applicable feature or plan checks still apply. For HTTP 403, check the credential type, applicable scopes, roles, and workspace access; 403 does not always mean a missing scope. Authentication/authorization failures do not guarantee a JSON response body. Allowed roles: `DEVELOPER`, `TRIAL`, `ADMINISTRATOR`, `EXTERNAL_ADMINISTRATOR`, `PARTNER_ADMINISTRATOR`, `AI_OPERATOR`, or `API_TOKEN`. A user with `FLEXI_TRIAL` or `FLEXI_PAID` is explicitly denied, even if another listed role is present. A qualifying outstanding invoice can also result in a 403 response.\n\n### Plan availability\n\nCommercial plan policy: this operation is packaged for Pro and Business. Account-specific runtime enforcement may differ; this documentation correction does not change account access. Authentication, roles, scopes and workspace/channel requirements still apply. See [Endpoint availability by plan](https://docs.wati.io/reference/endpoint-availability-by-plan).\n\nSet the collection variable scanId to the scan_id returned by an authorized asynchronous query. Do not invent it or substitute a contact/conversation identifier. These scan operations have separate plan packaging; account-specific runtime enforcement may differ."
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel conversation scan",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ext/v3/conversations/scans/{{scanId}}/cancel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ext",
+                "v3",
+                "conversations",
+                "scans",
+                "{{scanId}}",
+                "cancel"
+              ]
+            },
+            "description": "Request cancellation of a scan owned by the current user. The service rechecks permissions and returns the updated scan state.\n\n### Permissions\n\nFor API access tokens and OIDC tokens, satisfy **at least one** of: `api`, `conversationsv3:read`, `wati_integration:read`. API access tokens may satisfy a listed scope through the configured scope hierarchy; OIDC tokens are checked against their scope claims. Legacy JWT authentication does not use this scope check. Authentication, role, tenant, and applicable feature or plan checks still apply. For HTTP 403, check the credential type, applicable scopes, roles, and workspace access; 403 does not always mean a missing scope. Authentication/authorization failures do not guarantee a JSON response body. Allowed roles: `DEVELOPER`, `TRIAL`, `ADMINISTRATOR`, `EXTERNAL_ADMINISTRATOR`, `PARTNER_ADMINISTRATOR`, `AI_OPERATOR`, or `API_TOKEN`. A user with `FLEXI_TRIAL` or `FLEXI_PAID` is explicitly denied, even if another listed role is present. A qualifying outstanding invoice can also result in a 403 response.\n\n### Plan availability\n\nCommercial plan policy: this operation is packaged for Pro and Business. Account-specific runtime enforcement may differ; this documentation correction does not change account access. Authentication, roles, scopes and workspace/channel requirements still apply. See [Endpoint availability by plan](https://docs.wati.io/reference/endpoint-availability-by-plan).\n\nSet the collection variable scanId to the scan_id returned by an authorized asynchronous query. Do not invent it or substitute a contact/conversation identifier. These scan operations have separate plan packaging; account-specific runtime enforcement may differ."
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "auth": {
@@ -26975,6 +27125,12 @@
       "value": "",
       "type": "string",
       "description": "Paste the complete Access Token value copied from WATI API Docs, including the Bearer prefix."
+    },
+    {
+      "key": "scanId",
+      "value": "",
+      "type": "string",
+      "description": "Use the scan_id returned by an authorized asynchronous query."
     }
   ],
   "info": {
